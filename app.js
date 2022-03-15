@@ -42,6 +42,11 @@ app.get("/compose", (req, res) => {
   res.render("compose");
 });
 
+app.post("/compose", (req, res) => {
+  const posted = req.body.postTitle;
+  console.log(posted);
+});
+
 app.listen(port, () => {
   console.log("Server started on port: " + port + " on " + now.toUTCString());
 });
