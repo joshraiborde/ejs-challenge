@@ -15,8 +15,9 @@ const app = express();
 const port = 3000;
 const now = new Date();
 
-app.set("view engine", "ejs");
+posts = [];
 
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -43,8 +44,8 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  const posted = req.body.postTitle;
-  console.log(posted);
+  const post = { title: req.body.postTitle, body: req.body.postBody };
+  console.log(post);
 });
 
 app.listen(port, () => {
