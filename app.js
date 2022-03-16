@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
   res.render("home", {
     startingContent: homeStartingContent
   });
+  console.log(posts)
 });
 
 app.get("/about", (req, res) => {
@@ -44,8 +45,9 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  const post = { title: req.body.postTitle, body: req.body.postBody };
-  console.log(post);
+  const post = { title: req.body.postTitle, content: req.body.postBody };
+  posts.push(post)
+  res.redirect("/");
 });
 
 app.listen(port, () => {
