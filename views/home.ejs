@@ -2,15 +2,17 @@
 <h1>home</h1>
 <p><%= startingContent %></p>
 <% posts.forEach(post => {%>
-    <h1><%= post.title %></h1>
+    <h1>
+        <a href="/posts/<%=post.title%>"><%= post.title %></a>
+        </h1>
     <% if (post.content.length > 100) { %>
         <p>
           <%= post.content.substr(0,100) + "..." %>
-          <a href="/posts/<%=post.title%>">Read more</a>
+          <a href="/posts/<%=post.title%>">Read More</a>
         </p>
         <% } else { %>
         <%= post.content %>
-        <a href="/posts/<%=post.title%>">Read more</a>
+        <a href="/posts/<%=post.title%>">Read More</a>
         <% }; %>
 <%  }); %>
 <%- include("partials/footer") %>
