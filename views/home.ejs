@@ -3,6 +3,14 @@
 <p><%= startingContent %></p>
 <% posts.forEach(post => {%>
     <h1><%= post.title %></h1>
-    <p><%= post.content %></p>
+    <% if (post.content.length > 100) { %>
+        <p>
+          <%= post.content.substr(0,100) + "..." %>
+          <a href="/posts/<%=post.title%>">Read more</a>
+        </p>
+        <% } else { %>
+        <%= post.content %>
+        <a href="/posts/<%=post.title%>">Read more</a>
+        <% }; %>
 <%  }); %>
 <%- include("partials/footer") %>
